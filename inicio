@@ -1,0 +1,131 @@
+background: transparent;
+           <td style="padding: 1rem;">Silla Ergonómica</td>
+                                <td style="padding: 1rem;">Carlos R.</td>
+                                <td style="padding: 1rem; color: #059669; font-weight: 600;">$18.99</td>
+                                <td style="padding: 1rem;"><span style="background: #fef3c7; color: #92400e; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.9rem;">Procesando</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Reseñas Pendientes -->
+            <div style="background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                <h3 style="margin-bottom: 1.5rem;">Reseñas Recientes Pendientes de Respuesta</h3>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <div>
+                            <div class="reviewer-name">Ana Jiménez</div>
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <div class="review-date">Hace 1 día</div>
+                    </div>
+                    <p>"Increíbles planos para la mesa de centro. Todo muy claro y el resultado final superó mis expectativas. ¡Gracias!"</p>
+                    <div style="margin-top: 1rem;">
+                        <button class="btn btn-primary">Responder</button>
+                    </div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <div>
+                            <div class="reviewer-name">Miguel Torres</div>
+                            <div class="stars">⭐⭐⭐⭐</div>
+                        </div>
+                        <div class="review-date">Hace 2 días</div>
+                    </div>
+                    <p>"Buen plano, aunque me gustaría que incluyera más detalles sobre el acabado. El resto está perfecto."</p>
+                    <div style="margin-top: 1rem;">
+                        <button class="btn btn-primary">Responder</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navegación entre pantallas
+        function showScreen(screenName) {
+            // Ocultar todas las pantallas
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+            
+            // Mostrar la pantalla seleccionada
+            document.getElementById(screenName).classList.add('active');
+            
+            // Actualizar pills activos
+            document.querySelectorAll('.pill').forEach(pill => {
+                pill.classList.remove('active');
+            });
+            
+            // Activar el pill correspondiente
+            event.target.classList.add('active');
+        }
+        
+        // Navegación entre tabs del perfil
+        function showTab(tabName) {
+            // Ocultar todos los tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Mostrar el tab seleccionado
+            document.getElementById('tab-' + tabName).classList.add('active');
+            
+            // Actualizar botones activos
+            document.querySelectorAll('.profile-tab').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            event.target.classList.add('active');
+        }
+        
+        // Envío de formulario
+        function submitPlan(event) {
+            event.preventDefault();
+            document.getElementById('uploadSuccess').classList.add('show');
+            
+            // Resetear formulario después de 2 segundos
+            setTimeout(() => {
+                event.target.reset();
+                document.getElementById('uploadSuccess').classList.remove('show');
+            }, 3000);
+        }
+        
+        // Añadir estilos para los tabs
+        const style = document.createElement('style');
+        style.textContent = `
+            .profile-tab {
+                padding: 1rem 2rem;
+                border: none;
+                background: transparent;
+                cursor: pointer;
+                font-weight: 500;
+                color: #64748b;
+                border-bottom: 2px solid transparent;
+                transition: all 0.3s;
+            }
+            
+            .profile-tab.active {
+                color: #2563eb;
+                border-bottom-color: #2563eb;
+            }
+            
+            .profile-tab:hover {
+                color: #2563eb;
+            }
+            
+            .tab-content {
+                display: none;
+            }
+            
+            .tab-content.active {
+                display: block;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
